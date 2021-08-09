@@ -5,7 +5,7 @@ const ExpenseForm = (props) => {
   const [userInput, setUserInput] = useState({
     title: "",
     amount: 0,
-    date: new Date().getDate(),
+    date: new Date(),
   });
   const ChangeHandler = (event) => {
     // setUserInput({
@@ -26,14 +26,14 @@ const ExpenseForm = (props) => {
     const expenseData = {
       title: userInput.title,
       amount: userInput.amount,
-      date: userInput.date,
+      date: new Date(userInput.date),
     };
     //console.log(expenseData);
     props.onSaveExpenseData(expenseData);
     setUserInput({
       title: "",
       amount: 0,
-      date: new Date().getDate(),
+      date: new Date(),
     });
   };
 
@@ -64,7 +64,7 @@ const ExpenseForm = (props) => {
           <label>Date</label>
           <input
             type="date"
-            min="2021-08-08"
+            min="2021-01-01"
             max="2025-12-31"
             value={userInput.date}
             onChange={ChangeHandler}
