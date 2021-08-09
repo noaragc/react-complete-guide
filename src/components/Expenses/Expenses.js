@@ -17,20 +17,53 @@ const Expenses = (props) => {
     return expense.date.getFullYear().toString() === filteredYear;
   });
 
+  // CONDITIONAL 3:
+  let expensesContent = <p>No data was found.</p>;
+
+  if (filteredExpenses.length > 0) {
+    expensesContent = filteredExpenses.map((expense) => (
+      <ExpenseItem
+        title={expense.title}
+        date={expense.date}
+        amount={expense.amount}
+        key={expense.id}
+      />
+    ));
+  }
+  //END CONDITIONAL 3
+
   return (
     <Card className="expenses">
       <ExpensesFilter
         onFilterChange={filterChangeHandler}
         defaultYear={filteredYear}
       />
-      {filteredExpenses.map((expense) => (
-        <ExpenseItem
-          title={expense.title}
-          date={expense.date}
-          amount={expense.amount}
-          key={expense.id}
-        />
-      ))}
+      {/* EXECUTING CONDITIONAL 3 */}
+      {expensesContent}
+
+      {/* CONDITIONAL 2: {filteredExpenses.length === 0 && <p>No data was found.</p>}
+      {filteredExpenses.length > 0 &&
+        filteredExpenses.map((expense) => (
+          <ExpenseItem
+            title={expense.title}
+            date={expense.date}
+            amount={expense.amount}
+            key={expense.id}
+          />
+        ))} */}
+
+      {/* CONDITIONAL 1: {filteredExpenses.length === 0 ? (
+        <p>No data found.</p>
+      ) : (
+        filteredExpenses.map((expense) => (
+          <ExpenseItem
+            title={expense.title}
+            date={expense.date}
+            amount={expense.amount}
+            key={expense.id}
+          />
+        ))
+      )} */}
     </Card>
   );
 };
