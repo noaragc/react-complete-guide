@@ -5,7 +5,7 @@ const ExpenseForm = (props) => {
   const [userInput, setUserInput] = useState({
     title: "",
     amount: 0,
-    date: null,
+    date: new Date().getDate(),
   });
   const ChangeHandler = (event) => {
     // setUserInput({
@@ -33,7 +33,7 @@ const ExpenseForm = (props) => {
     setUserInput({
       title: "",
       amount: 0,
-      date: null,
+      date: new Date().getDate(),
     });
   };
 

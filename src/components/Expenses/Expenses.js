@@ -19,7 +19,12 @@ const Expenses = (props) => {
         defaultYear={filteredYear}
       />
       {props.expenses.map((e) => (
-        <ExpenseItem title={e.title} date={e.date} amount={e.amount} />
+        <ExpenseItem
+          title={e.title}
+          date={e.date}
+          amount={e.amount}
+          key={e.id}
+        />
       ))}
     </Card>
   );
